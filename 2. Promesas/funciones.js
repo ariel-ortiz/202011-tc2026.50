@@ -22,3 +22,20 @@ const b = x.reduce((acum, elem) => acum + elem, 0);
 
 console.log(x, y, z, a, b);
 x.forEach(e => console.log(e));
+
+const c = (f, g) => {
+  console.log(f * g);
+};
+
+c(5, 4);
+
+console.log((x => x * x)(3));
+
+((a, b, c) => {
+  console.log('------------');
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  console.log('------------');
+})(1, 2, 3);
+
