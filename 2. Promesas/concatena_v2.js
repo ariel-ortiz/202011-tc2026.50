@@ -1,28 +1,8 @@
 const fs = require('fs');
+const util = require('util');
 
-function createReadFilePromise(name) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(name, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
-}
-
-function createWriteFilePromise(name, data) {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(name, data, err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve('Ok');
-      }
-    });
-  });
-}
+const createReadFilePromise = util.promisify(fs.readFile);
+const createWriteFilePromise = util.promisify(fs.writeFile);
 
 /**
  * Reads the three files and writes their concatantion
@@ -36,14 +16,16 @@ function concatenate() {
       return createReadFilePromise('dos.txt');
     }).then(data => {
       result += data.toString();
-      return createReadFilePromise('tres.txt');
+      return createReadFilePromise('tresx.txt');
     }).then(data => {
       result += data.toString();
       return createWriteFilePromise('cuatro.txt', result);
-    }).then(x => {
-      console.log(x);
+    }).then(() => {
+      console.log('Ok');
     }).catch(err => {
       console.log('Error!!!', err);
+    }).finally(() => {
+      console.log('The end!');
     });
 }
 
