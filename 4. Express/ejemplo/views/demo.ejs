@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <!-- Un comentario. -->
+  <head>
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p>
+      fact(<%= n %>) = <%= x %>
+    </p>
+    <ul><% for (let enano of enanos) { %>
+      <% if (enano !== 'Bombur') { %>
+        <li>
+          <%= enano %>
+        </li>
+      <% } %>
+    <% } %>
+    </ul>
+  </body>
+</html>
